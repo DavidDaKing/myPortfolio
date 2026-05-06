@@ -4,95 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DaveHat | Cybersecurity Portfolio</title>
-  <style>
-    :root {
-      --bg: #0b0f14;
-      --card: #111827;
-      --accent: #22d3ee;
-      --text: #e5e7eb;
-      --muted: #9ca3af;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-    header {
-      padding: 4rem 1.5rem;
-      text-align: center;
-    }
-    header h1 {
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
-      color: var(--accent);
-    }
-    header p {
-      color: var(--muted);
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-    nav a {
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 500;
-    }
-    nav a:hover { color: var(--accent); }
-    section {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 3rem 1.5rem;
-    }
-    h2 {
-      color: var(--accent);
-      margin-bottom: 1rem;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-    }
-    .card {
-      background: var(--card);
-      padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-    }
-    .card h3 { margin-top: 0; }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      color: var(--muted);
-      border-top: 1px solid #1f2933;
-    }
-    .tag {
-      display: inline-block;
-      background: rgba(34,211,238,0.1);
-      color: var(--accent);
-      padding: 0.2rem 0.6rem;
-      border-radius: 999px;
-      font-size: 0.8rem;
-      margin-right: 0.4rem;
-    }
-  </style>
+  <link rel="stylesheet" href="myStyle.css">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
 </head>
 <body>
 
 <header>
   <h1>David Bower</h1>
-  <p>Cybersecurity Practitioner. Focused on offensive security and encryption. Working on secure technology one key stroke at a time.</p>
+  <p>Cybersecurity Practitioner. Focused on offensive security and cryptography. Working on secure technology one key stroke at a time.</p>
   <nav>
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
-    <a href="projects/desMITM.html">Projects</a>
+    <a href="services.html">Services</a>
+    <a href="#projects">Projects</a>
     <a href="#writeups">Certification Study</a>
     <a href="#contact">Contact</a>
   </nav>
@@ -101,7 +25,11 @@
 <section id="about">
   <h2>About Me</h2>
   <p>
-    My name is David and I set up this portfolio to display my skill set.
+    My name is David and I set up this portfolio to display my skill set, discuss new topics in cyber security, 
+    and advertize my free lance IT and information security services. I started studying cyber security in 2018 through a jump start program in my high school. In 2021 I graduated from Howard
+    Community College with an Associates degree in Cyber Security. In 2025, I graduated from University of Maryland Baltimore County with a Bachelor of Science in Computer Science.
+
+    <!-- Talk about experience next?  -->
   </p>
 </section>
 
@@ -123,23 +51,66 @@
       <span class="tag">PowerShell</span>
       <span class="tag">JavaScript</span>
       <span class="tag">C</span>
+      <span class="tag">PHP</span>
     </div>
   </div>
 </section>
 
 <section id="projects">
+  <!-- Questions to answer : Home Lab Architecture (EXAMPLE)
+
+    - Put this in a document to display on the site. 
+
+    1. What problem am I solving? 
+
+      Throughout my process of studying for the OSCP, I found that there were too few Active Directory labs. The ones that were available 
+      seemed to have hit the same subjects repeatedly. 
+
+    2. Why does that problem matter? 
+
+      This problem had to be solved for the purpose of preparation. I felt the need of having to go through every possible attack surface, leave no stone unturned,
+      and learn more about developing enterprise networks and securing them.
+
+    3. What did I do? 
+
+      I virtualized an "OSCP-Style" active directory lab environment. This consisted of a Domain Controller, Windows Server 2022, and a Windows 11 machine. 
+
+    4. How did I do it? 
+
+      I used proxmox for virtual machines, OPNSense for routing and firewall rules, and Kali Linux for executing offensive security tools. 
+
+    5. What challenges did I hit? 
+
+      Lots of routing issues. I had to set up routing per OSCP requirements. The internal computers were not allowed to communicate with external sources.
+
+    6. How did I solve these challenges? 
+
+      Persistence 
+
+    7. Result 
+
+      Working lab, able to emulate any attack surfaces I want. I can go down an arbitrary list, take good notes, and be well prepared for the exam. 
+
+  -->
   <h2>Projects</h2>
   <div class="grid">
+    <div class="card">
+      <h3><a href="projects/netArch.html">Home Lab Architecture</a></h3>
+      <p>
+        In preparation for the OSCP exam, I designed and deployed a virtualized enterprise-style networking architecture
+        to simulate internal attack surfaces within an Active Directory environment. 
+      </p>
+    </div>
     <div class="card">
       <h3>DES - Meet in the Middle Attack Simulation</h3>
       <p>Built an encryption program that utilizes the DES algorithm to encrypt and decrypt messages. 
         I've then used that same algorithm to mount a Meet in the Middle attack through brute forcing secret keys.
       </p>
     </div>
-    <div class="card">
+    <!-- <div class="card">
       <h3>Exploit Scraper</h3>
       <p>Python tool that scrapes Exploit-DB and outputs JSON for research workflows.</p>
-    </div>
+    </div> -->
   </div>
 </section>
 
@@ -147,9 +118,9 @@
   <h2>OSCP Study</h2>
   <div class="grid">
     <div class="card">
-      <h3>I am currently studying for the OSCP certification.</h3>
-      <p>Developed a structued, self-directed study plan to prepare for the OSCP exam.</p>
-      <p>Gained strong documentation skills through writing penetration test reports.</p>
+      <h3>I am working to obtain the OSCP certification.</h3>
+      <!-- Display well though out OSCP methodology -->
+      <!-- Share write ups of HTB boxes to showcase documentation skills -->
     </div>
   </div>
 </section>

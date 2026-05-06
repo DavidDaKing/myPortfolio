@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Network Project | DaveHat</title>
+  <link rel="stylesheet" href="../myStyle.css">
+  <style>
+    .project-header {
+      background: linear-gradient(135deg, #1f2933 0%, #111827 100%);
+      padding: 3rem 1.5rem;
+      border-bottom: 2px solid var(--accent);
+      margin-bottom: 3rem;
+    }
+
+    .project-header h1 {
+      font-size: 2.5rem;
+      color: var(--accent);
+      margin: 0 0 1rem 0;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .project-meta {
+      display: flex;
+      gap: 2rem;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .project-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .question-section {
+      background: var(--card);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      border-radius: 12px;
+      border-left: 4px solid var(--accent);
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .question-section h2 {
+      margin-top: 0;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .question-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      background: var(--accent);
+      color: var(--bg);
+      border-radius: 50%;
+      font-weight: bold;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .question-section p {
+      margin: 1rem 0 0 0;
+      color: var(--text);
+    }
+
+    .question-section ul,
+    .question-section ol {
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+    }
+
+    .question-section li {
+      margin-bottom: 0.5rem;
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .tech-tag {
+      background: rgba(34, 211, 238, 0.15);
+      color: var(--accent);
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      border: 1px solid rgba(34, 211, 238, 0.3);
+    }
+
+    .challenge-item {
+      background: rgba(239, 68, 68, 0.05);
+      padding: 1rem;
+      margin: 0.75rem 0;
+      border-left: 3px solid #ef4444;
+      border-radius: 4px;
+    }
+
+    .challenge-item strong {
+      color: #fca5a5;
+    }
+
+    .solution-item {
+      background: rgba(34, 197, 94, 0.05);
+      padding: 1rem;
+      margin: 0.75rem 0;
+      border-left: 3px solid #22c55e;
+      border-radius: 4px;
+    }
+
+    .solution-item strong {
+      color: #86efac;
+    }
+
+    .results-highlight {
+      background: rgba(34, 211, 238, 0.08);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+      border: 1px solid rgba(34, 211, 238, 0.2);
+    }
+
+    .back-link {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .back-link a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .back-link a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .project-header h1 {
+        font-size: 1.75rem;
+      }
+
+      .project-meta {
+        gap: 1rem;
+      }
+
+      .question-section {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="project-header">
+  <h1>Home Lab Architecture: Active Directory Environment</h1>
+  <div class="project-meta">
+    <span>📅 Date: January 2025</span>
+    <span>🏷️ Category: Network Architecture</span>
+  </div>
+</div>
+
+<!-- 1. PROBLEM STATEMENT -->
+<div class="question-section">
+  <h2>
+    <span class="question-number">1</span>
+    What Problem Am I Solving?
+  </h2>
+  <p>
+    Throughout my process of studying for the OSCP, I found that there were too few labs with multiple machines chained together that were publicly available. 
+    The ones that were available seemed to have hit the same subjects repeatedly. I needed a comprehensive 
+    lab environment that could test various attack surfaces and network configurations.
+  </p>
+</div>
+
+<!-- 2. PROBLEM IMPORTANCE -->
+<div class="question-section">
+  <h2>
+    <span class="question-number">2</span>
+    Why Does That Problem Matter?
+  </h2>
+  <p>
+    This problem had to be solved for the purpose of preparation. I felt the need of having to go through 
+    every possible attack surface, leave no stone unturned, and learn more about developing enterprise 
+    networks and securing them. A robust lab environment enables hands-on learning with real-world scenarios 
+    that can't be replicated through reading alone.
+  </p>
+</div>
+
+<!-- 3. SOLUTION OVERVIEW -->
+<div class="question-section">
+  <h2>
+    <span class="question-number">3</span>
+    What Did I Do?
+  </h2>
+  <p>
+    I virtualized an "OSCP-Style" active directory lab environment. This consisted of:
+  </p>
+  <ul>
+    <li>Domain Controller (Windows Server)</li>
+    <li>Windows Server 2022 (member server)</li>
+    <li>Windows 11 machine (client workstation)</li>
+    <li>Kali Linux (attacker machine)</li>
+  </ul>
+  <p>
+    The environment was designed to simulate a small enterprise network with isolated network segments 
+    and controlled connectivity.
+  </p>
+</div>
+
+<!-- 4. IMPLEMENTATION DETAILS -->
+<div class="question-section">
+  <h2>
+    <span class="question-number">4</span>
+    How Did I Do It?
+  </h2>
+  <p>
+    I used a combination of virtualization and networking tools to create the lab:
+  </p>
+  <div class="tech-stack">
+    <span class="tech-tag">Proxmox</span>
+    <span class="tech-tag">OPNSense</span>
+    <span class="tech-tag">Kali Linux</span>
+    <span class="tech-tag">Active Directory</span>
+    <span class="tech-tag">Windows Server</span>
+  </div>
+  <ul>
+    <li><strong>Virtualization:</strong> Used Proxmox for VM management and resource allocation</li>
+    <li><strong>Network Management:</strong> Configured OPNSense for routing and firewall rules</li>
+    <li><strong>Offensive Tools:</strong> Deployed Kali Linux for executing offensive security tools</li>
+    <li><strong>Directory Services:</strong> Set up Active Directory for domain management and group policies</li>
+  </ul>
+</div>
+
+<!-- 5. CHALLENGES ENCOUNTERED -->
+<div class="question-section">
+  <h2>
+    <span class="question-number">5</span>
+    What Challenges Did I Hit?
+  </h2>
+  <div class="challenge-item">
+    <strong>🔴 Routing Issues:</strong> Network traffic wasn't routing correctly between VLANs and segments
+  </div>
+  <div class="challenge-item">
+    <strong>🔴 Connectivity Restrictions:</strong> Internal computers were not allowed to communicate with external sources, 
+    requiring careful firewall rule design
+  </div>
+  <div class="challenge-item">
+    <strong>🔴 OSCP-like environment:</strong> Ensuring the lab architecture met all OSCP exam requirements and restrictions
+  </div>
+  <div class="challenge-item">
+    <strong>🔴 Resource Constraints:</strong> Managing CPU, memory, and disk allocation across multiple VMs
+  </div>
+</div>
+
+<!-- 6. SOLUTIONS APPLIED -->
+<div class="question-section">
+  <h2>
+    <span class="question-number">6</span>
+    How Did I Solve These Challenges?
+  </h2>
+  <div class="solution-item">
+    <strong>✅ Persistence:</strong> Systematically tested each routing rule and validated traffic flow through packet capture
+  </div>
+  <div class="solution-item">
+    <strong>✅ Firewall Design:</strong> Created explicit ingress/egress rules using OPNSense to enforce network segmentation
+  </div>
+  <div class="solution-item">
+    <strong>✅ Documentation:</strong> Maintained detailed network diagrams and configuration notes for reproducibility
+  </div>
+  <div class="solution-item">
+    <strong>✅ Incremental Testing:</strong> Built and tested the lab environment piece by piece rather than all at once
+  </div>
+</div>
+
+<!-- 7. RESULTS & OUTCOMES -->
+<div class="question-section">
+  <h2>
+    <span class="question-number">7</span>
+    Results
+  </h2>
+  <div class="results-highlight">
+    <p>
+      <strong>Working lab environment</strong> capable of emulating any attack surfaces I want. 
+      I can go down an arbitrary list, take good notes, and be well prepared for the exam.
+    </p>
+  </div>
+  <p style="margin-top: 1rem;">
+    <strong>Key Achievements:</strong>
+  </p>
+  <ul>
+    <li>Successfully isolated lab network from external internet</li>
+    <li>Implemented multiple attack scenarios and privilege escalation paths</li>
+    <li>Created repeatable lab configurations for future use</li>
+    <li>Achieved OSCP-compliant environment setup</li>
+    <li>Comprehensive hands-on experience with enterprise network security</li>
+  </ul>
+</div>
+
+<div class="back-link">
+  <a href="/">← Back to Portfolio</a>
+</div>
+
+</body>
+</html>
