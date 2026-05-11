@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Write-ups | DaveHat Cybersecurity</title>
+	<link rel="stylesheet" href="../myStyle.css">
+	<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" font-size="96">🌐</text></svg>'>
+	<style>
+		.back-link {
+			display: inline-block;
+			margin-bottom: 2rem;
+			color: var(--accent);
+			text-decoration: none;
+			font-weight: 500;
+		}
+
+		.back-link:hover {
+			text-decoration: underline;
+		}
+
+		.writeup-intro {
+			background: rgba(34, 211, 238, 0.05);
+			padding: 2rem;
+			border-radius: 12px;
+			border-left: 4px solid var(--accent);
+			margin-bottom: 3rem;
+			color: var(--muted);
+		}
+
+		.section-title {
+			color: var(--accent);
+			margin-top: 3rem;
+			margin-bottom: 1.5rem;
+			padding-bottom: 0.5rem;
+			border-bottom: 2px solid var(--accent);
+		}
+
+		.writeups-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+			gap: 2rem;
+			margin-bottom: 3rem;
+		}
+
+		.writeup-card {
+			background: var(--card);
+			padding: 1.5rem;
+			border-radius: 12px;
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+			border-left: 4px solid var(--accent);
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+			display: flex;
+			flex-direction: column;
+		}
+
+		.writeup-card:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 15px 40px rgba(34, 211, 238, 0.2);
+		}
+
+		.writeup-header {
+			margin-bottom: 1rem;
+		}
+
+		.writeup-title {
+			font-size: 1.3rem;
+			color: var(--accent);
+			margin: 0 0 0.5rem 0;
+		}
+
+		.writeup-id {
+			font-size: 0.9rem;
+			color: var(--muted);
+			margin: 0;
+		}
+
+		.writeup-description {
+			color: var(--text);
+			font-size: 0.95rem;
+			margin-bottom: 1rem;
+			flex-grow: 1;
+		}
+
+		.writeup-tags {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.5rem;
+			margin-bottom: 1rem;
+		}
+
+		.difficulty-tag {
+			display: inline-block;
+			padding: 0.25rem 0.75rem;
+			border-radius: 999px;
+			font-size: 0.75rem;
+			font-weight: 600;
+			text-transform: uppercase;
+		}
+
+		.difficulty-easy {
+			background: rgba(34, 197, 94, 0.2);
+			color: #86efac;
+		}
+
+		.difficulty-medium {
+			background: rgba(251, 146, 60, 0.2);
+			color: #fbaa64;
+		}
+
+		.difficulty-hard {
+			background: rgba(239, 68, 68, 0.2);
+			color: #fca5a5;
+		}
+
+		.category-tag {
+			display: inline-block;
+			background: rgba(34, 211, 238, 0.1);
+			color: var(--accent);
+			padding: 0.2rem 0.6rem;
+			border-radius: 999px;
+			font-size: 0.75rem;
+		}
+
+		.writeup-link {
+			color: var(--accent);
+			text-decoration: none;
+			font-weight: 500;
+			margin-top: auto;
+		}
+
+		.writeup-link:hover {
+			text-decoration: underline;
+		}
+
+		.placeholder-text {
+			color: var(--muted);
+			font-style: italic;
+			font-size: 0.9rem;
+			text-align: center;
+			padding: 3rem 1rem;
+		}
+
+		.empty-state {
+			background: rgba(34, 211, 238, 0.05);
+			padding: 2rem;
+			border-radius: 12px;
+			text-align: center;
+			color: var(--muted);
+			margin-bottom: 2rem;
+		}
+
+		@media (max-width: 768px) {
+			.writeups-grid {
+				grid-template-columns: 1fr;
+			}
+
+			header {
+				padding: 2rem 1.5rem;
+			}
+
+			header h1 {
+				font-size: 2rem;
+			}
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>Cybersecurity Research Documentation</h1>
+		<p>Technical deep-dives into CTF rooms and CVE analysis</p>
+	</header>
+
+	<section>
+		<a href="../index.html" class="back-link">← Back to Portfolio</a>
+
+		<div class="writeup-intro">
+			<p>This section contains detailed write-ups of my cybersecurity research and penetration testing exercises. Each write-up demonstrates my ability to identify vulnerabilities, exploit security flaws, and provide comprehensive documentation suitable for security teams and prospective employers.</p>
+		</div>
+
+		<!-- Hack the Box Section -->
+		<h2 class="section-title">🎯 Hack the Box Write-ups</h2>
+
+		<div class="writeups-grid" id="htb-writeups">
+			<div class="empty-state">
+				<p>Coming soon - New write-ups will be added here as they are completed</p>
+			</div>
+		</div>
+
+		<!-- Example write-up card (uncomment and modify when you have write-ups)
+		<div class="writeups-grid">
+			<div class="writeup-card">
+				<div class="writeup-header">
+					<h3 class="writeup-title">Box Name</h3>
+					<p class="writeup-id">HTB ID: 12345</p>
+				</div>
+				<div class="writeup-tags">
+					<span class="difficulty-tag difficulty-medium">Medium</span>
+					<span class="category-tag">Active Directory</span>
+					<span class="category-tag">Privilege Escalation</span>
+				</div>
+				<p class="writeup-description">Brief summary of the vulnerability chain, exploitation path, and key techniques used to compromise the target system.</p>
+				<a href="#" class="writeup-link">Read Full Write-up →</a>
+			</div>
+		</div>
+		-->
+
+		<!-- CVE Analysis Section -->
+		<h2 class="section-title">🔍 CVE Analysis</h2>
+
+		<div class="writeups-grid" id="cve-writeups">
+			<div class="empty-state">
+				<p>Coming soon - Detailed CVE analysis and proof-of-concept documentation</p>
+			</div>
+		</div>
+
+		<!-- Example CVE analysis card (uncomment and modify when you have analyses)
+		<div class="writeups-grid">
+			<div class="writeup-card">
+				<div class="writeup-header">
+					<h3 class="writeup-title">CVE-2024-XXXXX</h3>
+					<p class="writeup-id">Vulnerability Title</p>
+				</div>
+				<div class="writeup-tags">
+					<span class="difficulty-tag difficulty-hard">Critical</span>
+					<span class="category-tag">Web Application</span>
+					<span class="category-tag">RCE</span>
+				</div>
+				<p class="writeup-description">In-depth analysis of the vulnerability, affected software versions, exploitation techniques, and remediation strategies.</p>
+				<a href="#" class="writeup-link">Read Full Analysis →</a>
+			</div>
+		</div>
+		-->
+
+		<!-- Key Skills Demonstrated Section -->
+		<div style="background: rgba(34, 211, 238, 0.1); padding: 2rem; border-radius: 12px; border-left: 4px solid var(--accent); margin-top: 3rem;">
+			<h3 style="color: var(--accent); margin-top: 0;">Skills Demonstrated in These Write-ups</h3>
+			<div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+				<span class="tag">Vulnerability Assessment</span>
+				<span class="tag">Technical Documentation</span>
+				<span class="tag">Security Research</span>
+			</div>
+		</div>
+	</section>
+
+	<footer>
+		<p>&copy; 2026 DaveHat. All rights reserved.</p>
+	</footer>
+</body>
+</html>
