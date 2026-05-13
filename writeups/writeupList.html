@@ -178,8 +178,8 @@
 			<p>This section contains detailed write-ups of my cybersecurity research and penetration testing exercises. Each write-up demonstrates my ability to identify vulnerabilities, exploit security flaws, and provide comprehensive documentation suitable for security teams and prospective employers.</p>
 		</div>
 
-		<!-- Hack the Box Section -->
-		<h2 class="section-title">🎯 Hack the Box Write-ups</h2>
+		<!-- Scenario Section -->
+		<h2 class="section-title">🎯 Penetration Testing Write-ups</h2>
 
 		<div class="writeups-grid" id="htb-writeups">
 			<div class="empty-state">
@@ -187,7 +187,7 @@
 			</div>
 		</div>
 
-		<!-- Example write-up card (uncomment and modify when you have write-ups)
+		<!-- Example write-up card 
 		<div class="writeups-grid">
 			<div class="writeup-card">
 				<div class="writeup-header">
@@ -204,33 +204,35 @@
 			</div>
 		</div>
 		-->
-
 		<!-- CVE Analysis Section -->
 		<h2 class="section-title">🔍 CVE Analysis</h2>
 
-		<div class="writeups-grid" id="cve-writeups">
+		<!-- <div class="writeups-grid" id="cve-writeups">
 			<div class="empty-state">
 				<p>Coming soon - Detailed CVE analysis and proof-of-concept documentation</p>
 			</div>
-		</div>
+		</div> -->
 
-		<!-- Example CVE analysis card (uncomment and modify when you have analyses)
+        <!-- 1. COPY FAIL CVE WRITE-UP -->
 		<div class="writeups-grid">
 			<div class="writeup-card">
 				<div class="writeup-header">
-					<h3 class="writeup-title">CVE-2024-XXXXX</h3>
-					<p class="writeup-id">Vulnerability Title</p>
+					<h3 class="writeup-title">CVE-2026-31431</h3>
+					<p class="writeup-id">Copy Fail</p>
 				</div>
 				<div class="writeup-tags">
 					<span class="difficulty-tag difficulty-hard">Critical</span>
-					<span class="category-tag">Web Application</span>
-					<span class="category-tag">RCE</span>
+					<span class="category-tag">Linux Kernel</span>
+					<span class="category-tag">Local Privilege Escalation</span>
 				</div>
-				<p class="writeup-description">In-depth analysis of the vulnerability, affected software versions, exploitation techniques, and remediation strategies.</p>
-				<a href="#" class="writeup-link">Read Full Analysis →</a>
+				<p class="writeup-description">
+                    A single 732-byte python script successfully gives an unprivileged user root access. This impacts Linux kernel versions from 4.14 through 6.19.12.
+                    The script takes advantage of a logic flaw and requires zero race conditions or timing windows. 
+
+                </p>
+				<a href="CVE-2026-31431.html" class="writeup-link">Read Full Analysis →</a>
 			</div>
 		</div>
-		-->
 
 		<!-- Key Skills Demonstrated Section -->
 		<div style="background: rgba(34, 211, 238, 0.1); padding: 2rem; border-radius: 12px; border-left: 4px solid var(--accent); margin-top: 3rem;">
