@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VulnHub - Napping 1.0.1 - Davehat</title>
+    <link rel="stylesheet" href="../myStyle.css">
+    <style>
+        .writeup-content {
+            background: var(--card);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 0.5rem;
+        }
+
+        .subsection-title {
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        code {
+            background: rgba(34, 211, 238, 0.1);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            color: #22d3ee;
+            font-family: 'Courier New', monospace;
+        }
+
+        pre {
+            background: #0b0f14;
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            border-left: 4px solid var(--accent);
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            color: var(--text);
+        }
+
+        .flag {
+            background: rgba(34, 211, 238, 0.15);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #22d3ee;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .info-box {
+            background: rgba(34, 211, 238, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid var(--accent);
+        }
+
+        .metadata {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .meta-item {
+            background: rgba(34, 211, 238, 0.05);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .meta-label {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .meta-value {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        ul, ol {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+
+        li {
+            margin: 0.5rem 0;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .back-link {
+            margin-bottom: 2rem;
+        }
+
+        .back-link a {
+            color: var(--muted);
+        }
+
+        .back-link a:hover {
+            color: var(--accent);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(34, 211, 238, 0.2);
+        }
+
+        th {
+            color: var(--accent);
+            background: rgba(34, 211, 238, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Napping 1.0.1</h1>
+        <p>Vulnhub CTF write-up</p>
+    </header>
+
+    <section>
+        <div class="back-link">
+            <a href="writeupList.html">← Back to Writeups</a>
+        </div>
+
+        <div class="writeup-content">
+            <!-- Challenge Metadata -->
+            <div class="metadata">
+                <div class="meta-item">
+                    <div class="meta-label">Challenge Type</div>
+                    <div class="meta-value">CTF</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Difficulty</div>
+                    <div class="meta-value">Medium</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Category</div>
+                    <div class="meta-value">Web</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Date Completed</div>
+                    <div class="meta-value">May 8th, 2026</div>
+                </div>
+            </div>
+
+            <!-- Overview -->
+            <h2 class="section-title">Overview</h2>
+            <p>
+                [Provide a brief description of the challenge. What is the objective? 
+                What skills/techniques are required?]
+            </p>
+
+            <div class="info-box">
+                <strong>Objective:</strong> [What is the goal? Find a flag? Gain RCE? etc]
+            </div>
+
+            <!-- Reconnaissance / Enumeration -->
+            <h2 class="section-title">Reconnaissance / Enumeration</h2>
+            
+            <h3 class="subsection-title">Initial Scan</h3>
+            <!-- <p>[Describe your initial enumeration approach - port scanning, web directory enumeration, etc.]</p> -->
+            <pre><code>NMAP SCAN
+$ nmap -sV -sC -p- $IP -v </code></pre>
+
+            <h3 class="subsection-title">Service Discovery</h3>
+            <!-- <p>[Document discovered services, versions, and potentially vulnerable endpoints]</p> -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Port</th>
+                        <th>Service</th>
+                        <th>Version</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>22</td>
+                        <td>SSH</td>
+                        <td>OpenSSH 8.2p1</td>
+                        <td>Able to spray credentials for a foothold attempt</td>
+                    </tr>
+                    <tr>
+                        <td>80</td>
+                        <td>HTTP</td>
+                        <td>Apache 2.4.41</td>
+                        <td>The WebApp uses PHP</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 class="subsection-title">Web Application Analysis</h3>
+            <p>[If applicable: describe web enumeration, technologies identified, interesting findings]</p>
+            <pre><code>[Command example]
+$ gobuster dir -u http://target.com -w /usr/share/wordlists/common.txt</code></pre>
+
+            <!-- Vulnerability Analysis -->
+            <h2 class="section-title">Vulnerability Analysis</h2>
+            
+            <h3 class="subsection-title">Identified Vulnerabilities</h3>
+            <ul>
+                <li><strong>[Vulnerability Name]:</strong> [Description and CVE if applicable]</li>
+                <li><strong>[Vulnerability Name]:</strong> [Description and CVE if applicable]</li>
+            </ul>
+
+            <h3 class="subsection-title">Exploitation Vector</h3>
+            <p>[Explain the vulnerability and why it's exploitable]</p>
+            <pre><code>[Code/command for exploitation]</code></pre>
+
+            <!-- Exploitation -->
+            <h2 class="section-title">Exploitation</h2>
+
+            <h3 class="subsection-title">Step 1: [First Foothold / Initial Access]</h3>
+            <p>[Describe the exploitation process]</p>
+            <pre><code>[Exploit code or commands used]</code></pre>
+
+            <div class="info-box">
+                <strong>Result:</strong> [What access did you gain?]
+            </div>
+
+            <h3 class="subsection-title">Step 2: [Privilege Escalation / Next Phase]</h3>
+            <p>[Describe the next phase of exploitation]</p>
+            <pre><code>[Commands or code]</code></pre>
+
+            <!-- Post-Exploitation / Privilege Escalation -->
+            <h2 class="section-title">Post-Exploitation</h2>
+
+            <h3 class="subsection-title">Privilege Escalation</h3>
+            <p>[If applicable: describe how you escalated privileges]</p>
+            <ul>
+                <li>Identified privilege escalation vector</li>
+                <li>[Exploit/technique used]</li>
+                <li>Gained root/admin access</li>
+            </ul>
+
+            <h3 class="subsection-title">Proof of Compromise</h3>
+            <p>[Document the proof of exploitation]</p>
+            <pre><code>[Screenshots or command output showing successful exploitation]</code></pre>
+
+            <!-- Flags / Results -->
+            <h2 class="section-title">Flags & Results</h2>
+
+            <h3 class="subsection-title">User Flag</h3>
+            <div class="flag">
+                flag{[user_flag_content]}
+            </div>
+
+            <h3 class="subsection-title">Root/Admin Flag</h3>
+            <div class="flag">
+                flag{[root_flag_content]}
+            </div>
+
+            <!-- Key Takeaways -->
+            <h2 class="section-title">Key Takeaways & Lessons Learned</h2>
+            <ul>
+                <li><strong>[Skill/Technique]:</strong> [What did you learn?]</li>
+                <li><strong>[Vulnerability Type]:</strong> [Why is this dangerous?]</li>
+                <li><strong>[Tool/Methodology]:</strong> [What worked well in this challenge?]</li>
+            </ul>
+
+            <!-- Resources / References -->
+            <h2 class="section-title">Resources & References</h2>
+            <ul>
+                <li><a href="#">[Relevant Blog/Article]</a></li>
+                <li><a href="#">[CVE Database Link]</a></li>
+                <li><a href="#">[HackTricks / Documentation]</a></li>
+                <li><a href="#">[Exploit/Tool Repository]</a></li>
+            </ul>
+
+            <!-- Alternative Solutions -->
+            <h2 class="section-title">Alternative Solutions / Notes</h2>
+            <p>[Document any alternative exploitation methods or interesting findings during the challenge]</p>
+
+        </div>
+    </section>
+</body>
+</html>
