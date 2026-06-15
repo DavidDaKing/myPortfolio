@@ -311,10 +311,9 @@
                 <p><strong>Implementation: </strong>Created a transform rule within the cloudflare dashboard that
                     modifies the
                     response header to include CSP for every time an SSL/HTTPS request is made.</p>
-                <p>Content-Security-Policy: default-src 'self'; img-src 'self' https://davehat.net; style-src 'self'
-                    'unsafe-inline';</p>
 
             </ul>
+            <pre><code>Content-Security-Policy: default-src 'self'; img-src 'self' https://davehat.net; style-src 'self' 'unsafe-inline';</code></pre>
 
             <h3 class="subsection-title">How is my site doing so far? </h3>
             <p>
@@ -355,10 +354,10 @@
             <ul>
                 <p>
                     <li>
-                        Referrer-Policy: strict-origin-when-cross-origin
+                        <code>Referrer-Policy: strict-origin-when-cross-origin</code>
                     </li>
                     <li>
-                        Permissions-Policy: geolocation=(), camera=(), microphone=(), payment=()
+                        <code>Permissions-Policy: geolocation=(), camera=(), microphone=(), payment=()</code>
                     </li>
                 </p>
             </ul>
@@ -420,9 +419,9 @@
             <h3 class="subsection-title">Key Takeaway</h3>
 
             <strong>Security Hardening: </strong>Implementing security hardening through the HTTPS headers will
-                block the paths attackers may take to
-                exploit other users on the website.
-            
+            block the paths attackers may take to
+            exploit other users on the website.
+
 
 
             <!-- <div class="info-box">
@@ -431,12 +430,28 @@
 
             <!-- Sources & References -->
             <h2 class="section-title">Sources & References</h2>
-            <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; list-style: none; padding: 0; margin-top: 1.5rem;">
-                <li style="background: rgba(34, 211, 238, 0.08); padding: 1rem; border-radius: 6px; border-left: 3px solid var(--accent);"><a href="https://securityheaders.com" target="_blank" style="color: var(--accent);">Security Headers</a></li>
-                <li style="background: rgba(34, 211, 238, 0.08); padding: 1rem; border-radius: 6px; border-left: 3px solid var(--accent);"><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/X-Frame-Options" target="_blank" style="color: var(--accent);">X-Frame-Options</a></li>
-                <li style="background: rgba(34, 211, 238, 0.08); padding: 1rem; border-radius: 6px; border-left: 3px solid var(--accent);"><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy" target="_blank" style="color: var(--accent);">Content-Security-Policy</a></li>
-                <li style="background: rgba(34, 211, 238, 0.08); padding: 1rem; border-radius: 6px; border-left: 3px solid var(--accent);"><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Referrer-Policy" target="_blank" style="color: var(--accent);">Referrer-Policy</a></li>
-                <li style="background: rgba(34, 211, 238, 0.08); padding: 1rem; border-radius: 6px; border-left: 3px solid var(--accent);"><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Permissions-Policy" target="_blank" style="color: var(--accent);">Permissions-Policy</a></li>
+            <ul
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; list-style: none; padding: 0; margin-top: 1.5rem;">
+                <li
+                    style="background: rgba(34, 211, 238, 0.08); padding: 1rem; border-radius: 6px; border-left: 3px solid var(--accent);">
+                    <a href="https://securityheaders.com" target="_blank" style="color: var(--accent);">Security
+                        Headers</a></li>
+                <li
+                    style="background: rgba(34, 211, 238, 0.08); padding: 1rem; border-radius: 6px; border-left: 3px solid var(--accent);">
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/X-Frame-Options"
+                        target="_blank" style="color: var(--accent);">X-Frame-Options</a></li>
+                <li
+                    style="background: rgba(34, 211, 238, 0.08); padding: 1rem; border-radius: 6px; border-left: 3px solid var(--accent);">
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy"
+                        target="_blank" style="color: var(--accent);">Content-Security-Policy</a></li>
+                <li
+                    style="background: rgba(34, 211, 238, 0.08); padding: 1rem; border-radius: 6px; border-left: 3px solid var(--accent);">
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Referrer-Policy"
+                        target="_blank" style="color: var(--accent);">Referrer-Policy</a></li>
+                <li
+                    style="background: rgba(34, 211, 238, 0.08); padding: 1rem; border-radius: 6px; border-left: 3px solid var(--accent);">
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Permissions-Policy"
+                        target="_blank" style="color: var(--accent);">Permissions-Policy</a></li>
             </ul>
         </div>
     </section>
