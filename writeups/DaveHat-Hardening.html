@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Hardening - Red Team & Blue Team Operations</title>
+    <link rel="stylesheet" href="../myStyle.css">
+    <style>
+        .writeup-content {
+            background: var(--card);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 0.5rem;
+        }
+
+        .team-title {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .red-team {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+            border-left: 4px solid #ef4444;
+        }
+
+        .blue-team {
+            background: rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .subsection-title {
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        code {
+            background: rgba(34, 211, 238, 0.1);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            color: #22d3ee;
+            font-family: 'Courier New', monospace;
+        }
+
+        pre {
+            background: #0b0f14;
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            border-left: 4px solid var(--accent);
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            color: var(--text);
+        }
+
+        .info-box {
+            background: rgba(34, 211, 238, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid var(--accent);
+        }
+
+        .metadata {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .meta-item {
+            background: rgba(34, 211, 238, 0.05);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .meta-label {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .meta-value {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        ul,
+        ol {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+
+        li {
+            margin: 0.5rem 0;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .back-link {
+            margin-bottom: 2rem;
+        }
+
+        .back-link a {
+            color: var(--muted);
+        }
+
+        .back-link a:hover {
+            color: var(--accent);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        th,
+        td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(34, 211, 238, 0.2);
+        }
+
+        th {
+            color: var(--accent);
+            background: rgba(34, 211, 238, 0.1);
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .comparison-card {
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid;
+        }
+
+        .red-card {
+            background: rgba(239, 68, 68, 0.1);
+            border-left-color: #ef4444;
+        }
+
+        .blue-card {
+            background: rgba(59, 130, 246, 0.1);
+            border-left-color: #3b82f6;
+        }
+
+        .comparison-card h4 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Security Hardening Writeup</h1>
+        <p>Red Team Reconnaissance & Blue Team Defense</p>
+    </header>
+
+    <section>
+        <div class="back-link">
+            <a href="writeupList.html">← Back to Writeups</a>
+        </div>
+
+        <div class="writeup-content">
+            <!-- Metadata -->
+            <div class="metadata">
+                <div class="meta-item">
+                    <div class="meta-label">Type</div>
+                    <div class="meta-value">Red Team / Blue Team Exercise</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Focus Areas</div>
+                    <div class="meta-value">Reconnaissance & Hardening</div>
+                </div>
+                <!-- <div class="meta-item">
+                    <div class="meta-label">Technologies</div>
+                    <div class="meta-value"></div>
+                </div> -->
+                <div class="meta-item">
+                    <div class="meta-label">Date</div>
+                    <div class="meta-value">June 2026</div>
+                </div>
+            </div>
+
+            <!-- Executive Summary -->
+            <!-- <h2 class="section-title">Executive Summary</h2>
+            <p>
+                Performing passive reconnaissance techniques gives the penetration tester a map of potential attack surfaces. It is imperative to minimize the resources
+                exposed on public records. 
+            </p> -->
+
+            <!-- RED TEAM SECTION -->
+            <h2 class="section-title">Red Team: Passive Information Gathering</h2>
+
+            <h3 class="team-title red-team">Passive Reconnaissance</h3>
+            <p>
+
+            </p>
+
+            <h3 class="subsection-title"></h3>
+            <p>
+                There are ways of gathering information about a website's security posture. Using a third-party tool to
+                analyze my organization's HTTP response
+                gave me an understanding of how my website uses HTTP security headers to protect the visitor.
+            </p>
+
+            <!-- Include the screenshot from securityheaders.com  -->
+            <!-- Display the Security Report Summary
+                        - Highlight what you see as a penetration tester 
+                -->
+            <h3 class="subsection-title">1.2 HTTP Header Analysis</h3>
+            <!-- <p>
+                Analyze HTTP headers 
+            </p> -->
+            <img src="../images/Hardening/secHeaders.png" alt="HTTP Security Headers Analysis"
+                style="max-width: 100%; border-radius: 8px; margin: 1.5rem 0; border: 1px solid rgba(34, 211, 238, 0.2);">
+            <p>
+                <strong>Missing Security Headers:</strong> DaveHat is missing several defensive headers such as
+                Strict-Transport-Security, Content-Security-Policy, and X-Frame-Options. These are not necessarily
+                vulnerabilities
+                but they indicate that the administrator is not yet familiar with security hardening techniques.
+            </p>
+
+            <div class="info-box">
+                <strong>Key Finding:</strong> Doing this passive reconnaissance exercise shows that these methods reveal
+                security information without triggering intrusion detection systems.
+                Organizations often leak critical details through headers, certificates, and
+                publicly available information sources.
+            </div>
+
+            <!-- BLUE TEAM SECTION -->
+            <h2 class="section-title">Blue Team: Defense & Hardening</h2>
+
+            <h3 class="team-title blue-team">Security Headers Implementation</h3>
+            <!-- <p>
+                Security headers are HTTP response headers that instruct browsers to enforce security policies, 
+                protecting against common web vulnerabilities including XSS, clickjacking, and MIME type sniffing.
+            </p> -->
+
+            <h3 class="subsection-title">2.1 Strict-Transport-Security (HSTS)</h3>
+            <p>
+                Below showcases what the Strict-Transport-Security header is supposed to look like. This shows that it
+                should be included
+            </p>
+            <pre><code>Strict-Transport-Security: max-age=31536000; includeSubDomains; preload</code></pre>
+            <ul>
+                <li><strong>max-age:</strong> Duration in seconds that the browser should enforce HTTPS (31536000 = 1
+                    year)</li>
+                <li><strong>includeSubDomains:</strong> Apply HSTS to all subdomains</li>
+                <li><strong>preload:</strong> Allows inclusion in HSTS preload lists to protect initial requests</li>
+            </ul>
+            <p><strong>Implementation: </strong>Set the HTTP Strict-Transport-Security header values through
+                cloudflare's
+                dashboard on which my domain name is purchased from.</p>
+            <ul>
+                <li>Navigated to SSL/TLS > Edge Certificates</li>
+                <li>Enabled HSTS</li>
+                <li>Set recommended values above such as max-age header to 12 months (31536000 seconds), apply to
+                    subdomains, and preload.</li>
+            </ul>
+
+
+
+            <h3 class="subsection-title">2.2 Content-Security-Policy (CSP)</h3>
+            <p>
+                Including the Content-Security-Policy in the HTTP response headers allow the website administrator to
+                control
+                resources the user is allowed to load on the website!
+            </p>
+            <p>
+                This reduces the risk of cross-site scripting attacks because the resources that can be loaded is
+                defined by the
+                server.
+                Not restricting resources leaves DaveHat.net highly vulnerable to client-side attacks and content
+                manipulation. </p>
+
+            <ul>
+                <p><strong>Implementation: </strong>Created a transform rule within the cloudflare dashboard that
+                    modifies the
+                    response header to include CSP for every time an SSL/HTTPS request is made.</p>
+                <p>Content-Security-Policy: default-src 'self'; img-src 'self' https://davehat.net; style-src 'self'
+                    'unsafe-inline';</p>
+
+            </ul>
+
+            <h3 class="subsection-title">How is my site doing so far? </h3>
+            <p>
+                Here is the grade we receive from security headers after taking care of two things.
+            <ul>
+                <li>Strict-Transport-Security</li>
+                <li>Content-Security-Policy</li>
+            </ul>
+            </p>
+            <img src="../images/Hardening/bGradeHeader.png" alt="HTTP Security Headers Analysis"
+                style="max-width: 100%; border-radius: 8px; margin: 1.5rem 0; border: 1px solid rgba(34, 211, 238, 0.2);">
+
+
+            <h3 class="subsection-title">2.3 X-Frame-Options</h3>
+            <p>
+                Setting the X-Frame-Options header to the value of "SAMEORIGIN" tells the website that you do not want
+                your
+                website to be framed. Preventing a website from framing helps defend against clickjacking attacks.
+            </p>
+            <ul>
+                <p><strong>Implementation: </strong>Follows the same format as 2.2 Content-Security-Policy where I
+                    create a transform rule within the cloudflare dashboard that
+                    appends the response headers with the X-Frame-Options value.
+                </p>
+            </ul>
+
+            <h3 class="subsection-title">2.4 Additional Security Headers</h3>
+            <p>
+                The headers Referrer-Policy and Permissions-Policy are the remaining ones on the list that have yet to
+                be mitigated.
+            <ul>
+                <li>Referrer-Policy allows a site to control how much referrer information should be included with
+                    requests.</li>
+                <li>Permissions-Policy allows the web administrator to declare which APIs are allowed to be used.</li>
+            </ul>
+
+            <p><strong>Implementation: </strong></p>
+            <ul>
+                <p>
+                    <li>
+                        Referrer-Policy: strict-origin-when-cross-origin
+                    </li>
+                    <li>
+                        Permissions-Policy: geolocation=(), camera=(), microphone=(), payment=()
+                    </li>
+                </p>
+            </ul>
+            </p>
+
+            <h3 class="subsection-title">Final Result!! </h3>
+            <p>
+                Here is the grade we receive from security headers after checking all boxes.
+            </p>
+            <img src="../images/Hardening/finalGrade.png" alt="HTTP Security Headers Analysis"
+                style="max-width: 100%; border-radius: 8px; margin: 1.5rem 0; border: 1px solid rgba(34, 211, 238, 0.2);">
+
+
+            <!-- COMPARISON SECTION -->
+            <h2 class="section-title">Red Team vs Blue Team: Impact Summary</h2>
+
+            <div class="comparison-grid">
+                <div class="comparison-card red-card">
+                    <h4>🔴 Red Team Findings</h4>
+                    <ul>
+                        <li>Strict-Transport-Security was not set</li>
+                        <li>Content-Security-Policy was not set</li>
+                        <li>X-Frame-Options was not set</li>
+                        <li>Additional Headers were not set</li>
+                    </ul>
+                </div>
+                <div class="comparison-card blue-card">
+                    <h4>🔵 Blue Team Mitigations</h4>
+                    <ul>
+                        <li>Set Strict-Transport-Security header</li>
+                        <li>Set Content-Security-Policy header</li>
+                        <li>Set X-Frame-Options header</li>
+                        <li>Set the additional headers</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- LESSONS LEARNED -->
+            <h2 class="section-title">Lessons Learned & Best Practices</h2>
+
+            <h3 class="subsection-title">Defense in Depth</h3>
+            <p>
+                No single security header can prevent all web application attacks. Implementing this comprehensive set
+                of security headers will significantly
+                reduce the attack surface and enhance the security of the application.
+            </p>
+            <!-- <ul>
+                <li>Which layer on the OSI model did you just harden?</li>
+            </ul> -->
+
+            <h3 class="subsection-title">Configuration Management</h3>
+
+            <p>Using the cloudflare dashboard on which this domain name is hosted from, requires me to manually set
+                the Strict-Transport-Security headers and create the Content-Security-Policy, X-Frame-Options, and
+                additional headers. This proves that configuration management is a necessary process when developing
+                new technology to your organization's infrastructure.
+            </p>
+
+            <h3 class="subsection-title">Key Takeaway</h3>
+
+            <strong>Security Hardening: </strong>Implementing security hardening through the HTTPS headers will
+                block the paths attackers may take to
+                exploit other users on the website.
+            
+
+
+            <!-- <div class="info-box">
+                <strong>Final Note:</strong> Conclude this writeup
+            </div> -->
+
+            <!-- Sources & References -->
+            <h2 class="section-title">Sources & References</h2>
+            <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; list-style: none; padding: 0; margin-top: 1.5rem;">
+                <li style="background: rgba(34, 211, 238, 0.08); padding: 1rem; border-radius: 6px; border-left: 3px solid var(--accent);"><a href="https://securityheaders.com" target="_blank" style="color: var(--accent);">Security Headers</a></li>
+                <li style="background: rgba(34, 211, 238, 0.08); padding: 1rem; border-radius: 6px; border-left: 3px solid var(--accent);"><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/X-Frame-Options" target="_blank" style="color: var(--accent);">X-Frame-Options</a></li>
+                <li style="background: rgba(34, 211, 238, 0.08); padding: 1rem; border-radius: 6px; border-left: 3px solid var(--accent);"><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy" target="_blank" style="color: var(--accent);">Content-Security-Policy</a></li>
+                <li style="background: rgba(34, 211, 238, 0.08); padding: 1rem; border-radius: 6px; border-left: 3px solid var(--accent);"><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Referrer-Policy" target="_blank" style="color: var(--accent);">Referrer-Policy</a></li>
+                <li style="background: rgba(34, 211, 238, 0.08); padding: 1rem; border-radius: 6px; border-left: 3px solid var(--accent);"><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Permissions-Policy" target="_blank" style="color: var(--accent);">Permissions-Policy</a></li>
+            </ul>
+        </div>
+    </section>
+</body>
+
+</html>
