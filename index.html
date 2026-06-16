@@ -1,65 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DaveHat | Cybersecurity Portfolio</title>
   <link rel="stylesheet" href="myStyle.css">
-  <link
-  rel="icon"
-  href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" font-size="96">🌐</text></svg>'>
+  <link rel="icon"
+    href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" font-size="96">🌐</text></svg>'>
 </head>
+
 <body>
 
-<header>
-  <h1>David Bower</h1>
-  <p>Cybersecurity Practitioner. Focused on offensive security and cryptography. Working on secure technology one key stroke at a time.</p>
-  <nav>
-    <!-- <a href="#about">About</a>
+  <header>
+    <h1>David Bower</h1>
+    <p>Cybersecurity Practitioner. Focused on offensive security and cryptography. Working on secure technology one key
+      stroke at a time.</p>
+    <nav>
+      <!-- <a href="#about">About</a>
     <a href="#skills">Skills</a> -->
-    <a href="services.html">Services</a>
-    <a href="#projects">Projects</a>
-    <a href="writeups/writeupList.html">Study</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
+      <a href="services.html">Services</a>
+      <a href="#projects">Projects</a>
+      <a href="writeups/writeupList.html">Study</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-<section id="about">
-  <h2>About Me</h2>
-  <p>
-    My name is David and I set up this portfolio to display my skill set, discuss new topics in cybersecurity, 
-    and advertize my freelance IT and information security services. I started studying cybersecurity in 2018 through a jump start program in my high school. In 2021, I graduated from Howard
-    Community College with an Associates degree in Cyber Security. In 2025, I graduated from University of Maryland Baltimore County with a Bachelor of Science in Computer Science.
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      My name is David and I set up this portfolio to display my skill set, discuss new topics in cybersecurity,
+      and advertize my freelance IT and information security services. I started studying cybersecurity in 2018 through
+      a jump start program in my high school. In 2021, I graduated from Howard
+      Community College with an Associates degree in Cybersecurity. In 2025, I graduated from University of Maryland
+      Baltimore County with a Bachelor of Science in Computer Science.
 
-    <!-- Talk about experience next?  -->
-  </p>
-</section>
+      <!-- Talk about experience next?  -->
+    </p>
+  </section>
 
-<section id="skills">
-  <h2>Skills</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>My Practices</h3>
-      <span class="tag">Active Directory Penetration Testing</span>
-      <span class="tag">Fixing Public Exploits</span>
-      <span class="tag">Hosting Encryption Programs on WebApps</span>
-      <span class="tag">Common Web Application Attacks</span>
-      <span class="tag">Building Encryption Algorithms</span>
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>My Practices</h3>
+        <span class="tag">Active Directory Penetration Testing</span>
+        <span class="tag">Fixing Public Exploits</span>
+        <span class="tag">Hosting Encryption Programs on WebApps</span>
+        <span class="tag">Common Web Application Attacks</span>
+        <span class="tag">Building Encryption Algorithms</span>
+      </div>
+      <div class="card">
+        <h3>Programming Skills</h3>
+        <span class="tag">Python</span>
+        <span class="tag">Bash</span>
+        <span class="tag">PowerShell</span>
+        <span class="tag">JavaScript</span>
+        <span class="tag">C</span>
+        <span class="tag">PHP</span>
+      </div>
     </div>
-    <div class="card">
-      <h3>Programming Skills</h3>
-      <span class="tag">Python</span>
-      <span class="tag">Bash</span>
-      <span class="tag">PowerShell</span>
-      <span class="tag">JavaScript</span>
-      <span class="tag">C</span>
-      <span class="tag">PHP</span>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section id="projects">
-  <!-- Questions to answer : Home Lab Architecture (EXAMPLE)
+  <section id="projects">
+    <!-- Questions to answer : Home Lab Architecture (EXAMPLE)
 
     - Put this in a document to display on the site. 
 
@@ -94,39 +98,49 @@
       Working lab, able to emulate any attack surfaces I want. I can go down an arbitrary list, take good notes, and be well prepared for the exam. 
 
   -->
-  <h2>Projects</h2>
-  <div class="grid">
-    <div class="card">
-      <h3><a href="projects/netArch.html">Home Lab Architecture</a></h3>
-      <p>
-        In preparation for the OSCP exam, I designed and deployed a virtualized enterprise-style networking architecture
-        to simulate internal attack surfaces within an Active Directory environment. 
-      </p>
-    </div>
-    <!-- <div class="card">
+    <h2>Projects</h2>
+    <div class="grid">
+      <div class="card">
+        <h3><a href="projects/netArch.html">Home Lab Architecture</a></h3>
+        <p>
+          In preparation for the OSCP exam, I designed and deployed a virtualized enterprise-style networking
+          architecture
+          to simulate internal attack surfaces within an Active Directory environment.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3><a href="writeups/DaveHat-Hardening.html">Web Security Hardening</a></h3>
+        <p>
+          Turned my website's security grade from F to A. Here is exactly which HTTP headers I implemented and how
+          passive recon exposed the possible attack surfaces.
+        </p>
+      </div>
+      <!-- <div class="card">
       <h3>DES - Meet in the Middle Attack Simulation</h3>
       <p>Built an encryption program that utilizes the DES algorithm to encrypt and decrypt messages. 
         I've then used that same algorithm to mount a Meet in the Middle attack through brute forcing secret keys.
       </p>
     </div> -->
-    <!-- <div class="card">
+      <!-- <div class="card">
       <h3>Exploit Scraper</h3>
       <p>Python tool that scrapes Exploit-DB and outputs JSON for research workflows.</p>
     </div> -->
-  </div>
-</section>
+    </div>
+  </section>
 
-<section id="contact">
-  <h2>Contact</h2>
-  <p>
-    GitHub: <a href="https://github.com/DavidDaKing" target="_blank">github.com/DavidDaKing</a><br />
-    Email: dabower787@gmail.com
-  </p>
-</section>
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>
+      GitHub: <a href="https://github.com/DavidDaKing" target="_blank">github.com/DavidDaKing</a><br />
+      Email: dabower787@gmail.com
+    </p>
+  </section>
 
-<footer>
-  © 2026 DaveHat · Built with HTML & CSS
-</footer>
+  <footer>
+    © 2026 DaveHat · Built with HTML & CSS
+  </footer>
 
 </body>
+
 </html>
