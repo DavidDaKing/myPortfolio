@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -91,7 +92,8 @@
             font-weight: 600;
         }
 
-        ul, ol {
+        ul,
+        ol {
             margin: 1rem 0;
             padding-left: 2rem;
         }
@@ -127,7 +129,8 @@
             margin: 1rem 0;
         }
 
-        th, td {
+        th,
+        td {
             padding: 0.75rem;
             text-align: left;
             border-bottom: 1px solid rgba(34, 211, 238, 0.2);
@@ -139,6 +142,7 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <h1>Napping 1.0.1</h1>
@@ -163,7 +167,7 @@
                 </div>
                 <div class="meta-item">
                     <div class="meta-label">Category</div>
-                    <div class="meta-value">Web</div>
+                    <div class="meta-value">Web, Local</div>
                 </div>
                 <div class="meta-item">
                     <div class="meta-label">Date Completed</div>
@@ -174,17 +178,20 @@
             <!-- Overview -->
             <h2 class="section-title">Overview</h2>
             <p>
-                [Provide a brief description of the challenge. What is the objective? 
-                What skills/techniques are required?]
+                Enumeration, OWASP Top 10 exploits, sensitive information stored locally, and take advantage of local
+                sudo permissions.
             </p>
 
             <div class="info-box">
-                <strong>Objective:</strong> [What is the goal? Find a flag? Gain RCE? etc]
+                <strong>Objective:</strong> The objective is to find vulnerabilities within the web application that
+                allows us to gain an RCE
+                within the web server terminal. After accomplishing this, we must escalate our privileges to gain full
+                control of the system.
             </div>
 
             <!-- Reconnaissance / Enumeration -->
             <h2 class="section-title">Reconnaissance / Enumeration</h2>
-            
+
             <h3 class="subsection-title">Initial Scan</h3>
             <!-- <p>[Describe your initial enumeration approach - port scanning, web directory enumeration, etc.]</p> -->
             <pre><code>NMAP SCAN
@@ -212,94 +219,150 @@ $ nmap -sV -sC -p- $IP -v </code></pre>
                         <td>80</td>
                         <td>HTTP</td>
                         <td>Apache 2.4.41</td>
-                        <td>The WebApp uses PHP</td>
+                        <td>The webapp uses PHP</td>
                     </tr>
                 </tbody>
             </table>
 
-            <h3 class="subsection-title">Web Application Analysis</h3>
-            <p>[If applicable: describe web enumeration, technologies identified, interesting findings]</p>
-            <pre><code>[Command example]
-$ gobuster dir -u http://target.com -w /usr/share/wordlists/common.txt</code></pre>
+            <h3 class="subsection-title">Home page</h3>
+            <p>Browsing to the web page prompts me to create an account. After doing so, this is the resulting page:</p>
+            <img src="../images/NAPPING_WRITE/nappinHomePage.png" alt="Web Application After Registration"
+                style="max-width: 100%; height: auto; border-radius: 8px; margin: 1rem 0;">
 
             <!-- Vulnerability Analysis -->
             <h2 class="section-title">Vulnerability Analysis</h2>
-            
+
             <h3 class="subsection-title">Identified Vulnerabilities</h3>
             <ul>
-                <li><strong>[Vulnerability Name]:</strong> [Description and CVE if applicable]</li>
-                <li><strong>[Vulnerability Name]:</strong> [Description and CVE if applicable]</li>
+                <li><strong>Reverse Tabnabbing:</strong> A web application vulnerability that allows an attacker to
+                    replace a legitimate page with a phishing webpage.
+                    This leads to credential harvesting or sensitive information being leaked because the user may not
+                    notice that the site has been changed to a phishing site.</li>
+                <!-- <li><strong>[Vulnerability Name]:</strong> [Description and CVE if applicable]</li> -->
             </ul>
 
             <h3 class="subsection-title">Exploitation Vector</h3>
-            <p>[Explain the vulnerability and why it's exploitable]</p>
-            <pre><code>[Code/command for exploitation]</code></pre>
+            <p>Links within this website use target="_blank" without the implementation of rel="noopener" which shows
+                that this is a viable attack vector.</p>
 
+            <img src="../images/NAPPING_WRITE/nappingAfterLink.png" alt="Exploitation Vector"
+                style="max-width: 100%; height: auto; border-radius: 8px; margin: 1rem 0;">
+            <img src="../images/NAPPING_WRITE/tabnabbing.png" alt="Exploitation Vector"
+                style="max-width: 100%; height: auto; border-radius: 8px; margin: 1rem 0;">
             <!-- Exploitation -->
             <h2 class="section-title">Exploitation</h2>
 
-            <h3 class="subsection-title">Step 1: [First Foothold / Initial Access]</h3>
-            <p>[Describe the exploitation process]</p>
-            <pre><code>[Exploit code or commands used]</code></pre>
+            <h3 class="subsection-title">Step 1: Creating the login page</h3>
+            <p>Since the web pages hints that an administrator checks the links thats inputted and given that the attack
+                vector of
+                tabnabbing is available. Lets make a clone of the original login panel that is displayed when we first
+                access the web page.</p>
 
             <div class="info-box">
-                <strong>Result:</strong> [What access did you gain?]
+                <strong>Result:</strong> Should have a website under our control that is a replica of the original login
+                panel.
+                <p><img src="../images/NAPPING_WRITE/fakeLogin.png" alt="Exploitation Vector"
+                        style="max-width: 50%; height: auto; border-radius: 8px; margin: 1rem 0;"></p>
             </div>
 
-            <h3 class="subsection-title">Step 2: [Privilege Escalation / Next Phase]</h3>
-            <p>[Describe the next phase of exploitation]</p>
-            <pre><code>[Commands or code]</code></pre>
+            <h3 class="subsection-title">Step 2: Using javascript code</h3>
+            <p>Now that we have our replicated login panel, lets embed javascript code in a webpage that links the user
+                session to our phishing site (the replicated login panel).</p>
+
+            <div class="info-box">
+                The code to accomplish this step should be as follows:
+                <p><img src="../images/NAPPING_WRITE/linkPage.png" alt="Exploitation Vector"
+                        style="max-width: 75%; height: auto; border-radius: 8px; margin: 1rem 0;"></p>
+            </div>
+
+            <h3 class="subsection-title">Step 3: Execution!!</h3>
+            <p>We must create a local web server that we control, set up a netcat listener for port 8000, and enter the
+                link of our html file that uses the embedded javascript code shown above.</p>
+
+            <div class="info-box">
+                If all goes right, we should be able to capture the administrator's session and credentials passed in to
+                the login panel.
+                <p><img src="../images/NAPPING_WRITE/netcatNapping.png" alt="Exploitation Vector"
+                        style="max-width: 75%; height: auto; border-radius: 8px; margin: 1rem 0;"></p>
+                FYI, Daniel's password is URL-encoded so that %40 really means @
+                His credentials is daniel : C@ughtm3napping123
+            </div>
 
             <!-- Post-Exploitation / Privilege Escalation -->
             <h2 class="section-title">Post-Exploitation</h2>
 
-            <h3 class="subsection-title">Privilege Escalation</h3>
-            <p>[If applicable: describe how you escalated privileges]</p>
-            <ul>
-                <li>Identified privilege escalation vector</li>
-                <li>[Exploit/technique used]</li>
-                <li>Gained root/admin access</li>
-            </ul>
+            <h3 class="subsection-title">Lateral Movement from Danny --> Adrian </h3>
+            <p>
+                When enumerating the initial account I have access to, I found that Daniel is apart of a custom group
+                called Administrators.
+                I issued the find command to search for the files that I have access to under the administrators group.
+                In doing this, I found a python script under the home directory of a user named Adrian.
+                The python code is telling me that it is executing a repeating task which checks the webpage
+                availability.
+                Further examining the home directory of Adrian validates my suspicion because it shows a text file of
+                every time the file executes.
+            </p>
+
+            <div class="info-box"><img src="../images/NAPPING_WRITE/danShell.png" alt="Exploitation Vector"
+                    style="max-width: 75%; height: auto; border-radius: 8px; margin: 1rem 0;"></div>
 
             <h3 class="subsection-title">Proof of Compromise</h3>
-            <p>[Document the proof of exploitation]</p>
-            <pre><code>[Screenshots or command output showing successful exploitation]</code></pre>
-
-            <!-- Flags / Results -->
-            <h2 class="section-title">Flags & Results</h2>
-
-            <h3 class="subsection-title">User Flag</h3>
-            <div class="flag">
-                flag{[user_flag_content]}
+            <p>Since I have full modification access to the python file, I can add code which sends me a shell into
+                Adrian's account</p>
+            <div class="info-box">
+                <img src="../images/NAPPING_WRITE/adrianProof.png" alt="Exploitation Vector"
+                    style="max-width: 75%; height: auto; border-radius: 8px; margin: 1rem 0;">
             </div>
 
-            <h3 class="subsection-title">Root/Admin Flag</h3>
-            <div class="flag">
-                flag{[root_flag_content]}
+            <h3 class="subsection-title">Privilege Escalation from Adrian --> Root</h3>
+            <p>
+                Enumerating sudo permissions led me to find a vulnerability where Adrian is able to get into a root
+                shell due to being granted sudo permissions for
+                the vim binary.
+            </p>
+
+            <h3 class="subsection-title">Proof of Compromise</h3>
+            <p>I am able to exploit this vulnerability through a one-line command which is
+            <pre><code>sudo /usr/bin/vim -c ':!/bin/sh'</code></pre>
+            </p>
+            <div class="info-box">
+                <img src="../images/NAPPING_WRITE/proofRoot.png" alt="Exploitation Vector"
+                    style="max-width: 75%; height: auto; border-radius: 8px; margin: 1rem 0;">
             </div>
+
 
             <!-- Key Takeaways -->
             <h2 class="section-title">Key Takeaways & Lessons Learned</h2>
             <ul>
-                <li><strong>[Skill/Technique]:</strong> [What did you learn?]</li>
-                <li><strong>[Vulnerability Type]:</strong> [Why is this dangerous?]</li>
-                <li><strong>[Tool/Methodology]:</strong> [What worked well in this challenge?]</li>
+                <li><strong>[Skill/Technique]:</strong> Webpage enumeration, Reverse-Tabnabbing</li>
+                <li><strong>[Vulnerability Type]:</strong> We were able to take advantage of scripts that automates
+                    mundane tasks to elevate our privilege level-by-level.</li>
+                <li><strong>[Tool/Methodology]:</strong> Using my remote web server and netcat port listeners allowed me
+                    to get an initial foothold. Re-using netcat allowed me to laterally move to another user with more
+                    privileges.</li>
+            </ul>
+
+            <h2 class="section-title">MITRE ATT&CK METHODS USED</h2>
+            <ul>
+                <li>Initial Access | Content Injection T1659</li>
+                <li>Initial Access | Phishing T1566</li>
+                <li>Execution | Scheduled Task/Job T1053</li>
+                <li>Privilege Escalation | Abuse Elevation Control Mechanism T1548</li>
             </ul>
 
             <!-- Resources / References -->
             <h2 class="section-title">Resources & References</h2>
             <ul>
-                <li><a href="#">[Relevant Blog/Article]</a></li>
-                <li><a href="#">[CVE Database Link]</a></li>
+                <li><a href="https://owasp.org/www-community/attacks/Reverse_Tabnabbing">OWASP - Reverse Tabnabbing</a>
+                </li>
+                <li><a href="https://gtfobins.org/gtfobins/vim/">Exploiting sudo access to vim binary</a></li>
+                <!-- <li><a href="#">[CVE Database Link]</a></li>
                 <li><a href="#">[HackTricks / Documentation]</a></li>
-                <li><a href="#">[Exploit/Tool Repository]</a></li>
+                <li><a href="#">[Exploit/Tool Repository]</a></li> -->
             </ul>
-
-            <!-- Alternative Solutions -->
-            <h2 class="section-title">Alternative Solutions / Notes</h2>
-            <p>[Document any alternative exploitation methods or interesting findings during the challenge]</p>
 
         </div>
     </section>
 </body>
+
 </html>
